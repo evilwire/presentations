@@ -1,1 +1,7 @@
 _site
+
+# ignore all Intellij IDE files
+.idea/
+
+# ignore all vim swap files
+*.sw*
