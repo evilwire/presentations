@@ -1,6 +1,8 @@
 # Monads Defined
 
-(yet again) {% fragment %}
+<span class="fragment">
+    (yet again)
+</span>
 
 --
 
@@ -38,21 +40,21 @@ map(dbWrapped, flatMap(_, foo)) = flatMap(dbWrapped, foo)
 
 ## How are these definitions related?
 
-<ol>
-<li class="fragment">
-`map` is the method that enforces "functoriality"
-</li>
+<ul>
+    <li class="fragment">
+        `map` is the method that enforces "functoriality"
+    </li>
 
-<li class="fragment">
-`wrap` and `flatten` define the two natural transformations
-</li>
+    <li class="fragment">
+        `wrap` and `flatten` define the two natural transformations
+    </li>
 
-<li class="fragment">
-`map(wrap(a), foo) = wrap(foo(a))` ensures the naturality of wrap
-</li>
+    <li class="fragment">
+        `map(wrap(a), foo) = wrap(foo(a))` ensures the naturality of wrap
+    </li>
 
-<li class="fragment">
-`flatMap(wrap(a), wrap(foo(_))) = wrap(foo(a))` enforces the naturality
-of `flatten`
-</li>
-</ol>
+    <li class="fragment">
+        `flatMap(wrap(a), wrap(foo(_))) = wrap(foo(a))` enforces the naturality
+        of `flatten`
+    </li>
+</ul>

@@ -1,7 +1,15 @@
 ## Agenda
 
-- Some academic stuff {% fragment %}
+<ol>
+    <li class="fragment">
+        Some academic stuff
+    </li>
 
-- Define what monads are for real {% fragment %}
+    <li class="fragment">
+        Define what monads are for real
+    </li>
 
-- Examples of monads and why those examples are useful {% fragment %}
+    <li class="fragment">
+        Examples of monads and why those examples are useful
+    </li>
+</ol>

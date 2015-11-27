@@ -1,20 +1,30 @@
 # The Academic Stuff
 
-(yay) {% fragment %}
+<span class="fragment">
+    (yay)
+</span>
 
 --
 
 ## Abstract Categories
 
-- a "class" of objects {% fragment %}
+<ul>
+    <li class="fragment">
+        a "class" of objects
+    </li>
 
-- for any two objects, there is a "class" of arrows called
-  morphisms (each representing a type of relationship between these two
-  objects) {% fragment %}
+    <li class="fragment">
+        for any two objects, there is a "class" of arrows called
+        morphisms (each representing a type of relationship between these two
+        objects)
+    </li>
 
-- the pair of objects and morphisms form a category if morphisms
-  satisfy four main axioms (i.e. there is an identity morphism, there's
-  composition, composition is associative, etc) {% fragment %}
+    <li class="fragment">
+        the pair of objects and morphisms form a category if morphisms
+        satisfy four main axioms (i.e. there is an identity morphism, there's
+        composition, composition is associative, etc)
+    </li>
+</ul>
 
 --
 
@@ -60,42 +70,44 @@ $$
 $$
 </span>
 
-(and by "=", I mean naturally equivalent.) {% fragment %}
+<span class="fragment">
+(and by "=", I mean naturally equivalent.)
+</span>
 
 --
 
-### Categories in CS
+### Categories in CS (Concrete Types)
 
-#### Concrete Types {% fragment %}
 <ul>
-<li class="fragment">
-objects are the universe of data structures (e.g.
-`String`, `Int`, `CheckingAccount[? >: Person]`)
-</li>
-<li class="fragment">
-morphisms are methods to convert one data structure to another
-(e.g. `len(s: String): Int`, `buyStuff(money: NonNegativeInt): Thing`)
-</li>
-<ul>
+    <li class="fragment">
+        objects are the universe of data structures
+    </li>
+
+    <li class="fragment">
+        morphisms are methods to convert one data structure to another
+    </li>
+</ul>
 
 --
 
 ### Monads (less math, a little less abstract)
 
+<span class="fragment">
 A monad $M$ is a way to associate any given data structure $A$
-with another data structure $M[A]$ that allows us to: {% fragment %}
+with another data structure $M[A]$ that allows us to:
+</span>
 
-<ol>
-<li class="fragment">
-create an instance of $M[A]$ from a given instance of $A$ for any data
-structure $A$ (embed)
-</li>
+<ul>
+    <li class="fragment">
+        create an instance of $M[A]$ from a given instance of $A$ for any data
+        structure $A$ (embed)
+    </li>
 
-<li class="fragment">
-obtain an instance of $M[A]$ from a given instance of $M[M[A]]$ for any
-   data structure $A$ (flatmap)
-</li>
-</ol>
+    <li class="fragment">
+        obtain an instance of $M[A]$ from a given instance of $M[M[A]]$ for any
+        data structure $A$ (flatmap)
+    </li>
+</ul>
 
 --
 
@@ -109,26 +121,32 @@ compatible with `return` and `bind`.
 
 --
 
-### What does it mean when Scala folks say `Option[?]` is a monoid?
-
-`Option` associates a type `T` with `Option[T]` and:
-
-- embed: `Some`
-- flatmap: `_.flatMap[T](_.get)`
-
-Via `map`, any `T` function is lifted to a function on `Option[T]`
-
---
-
 ## Relations to the literature
 
-- "embed" is the same as "return" in literature
-- "flatmap" + naturality of monads is "bind" in literature
+<ul>
+    <li class="fragment">
+        "embed" is the same as "return" in literature
+    </li>
+
+    <li class="fragment">
+        "flatmap" + naturality of monads is "bind" in literature
+    </li>
+</ul>
 
 --
 
 ## Why are Monads Useful (version 1)
 
-- Elevates you from an engineer to an engineer with jargon #sarcasm {% fragment %}
-- A unified way of looking at the problem of "getting things" {% fragment %}
-- Forms the backbone of pure functional programming {% fragment %}
+<ul>
+    <li class="fragment">
+        Elevates you from an engineer to an engineer with jargon #sarcasm
+    </li>
+
+    <li class="fragment">
+        A unified way of looking at the problem of "getting things"
+    </li>
+
+    <li class="fragment">
+        Forms the backbone of pure functional programming
+    </li>
+</ul>
