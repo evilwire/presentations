@@ -14,45 +14,96 @@ anyway.
 ### Two short answers:
 
 <ol>
-<li class="fragment">They are special types of wrappers of datetypes</li>
-<li class="fragment">They are programmable semi-colons</li>
+    <li class="fragment">
+        They are special types of wrappers of datetypes
+    </li>
+
+    <li class="fragment">
+        They are programmable semi-colons
+    </li>
 </ol>
 
-(These two aspects capture 90% of what monads are.*) {% fragment %}
+<span class="fragment">
+    (These two aspects capture 90% of what monads are.*)
+</span>
 
-\* the other 10% is nonsense anyway, as you will see. {% fragment %}
+<span class="fragment">
+    \* the other 10% is nonsense anyway, as you will see.
+</span>
 
 ---
 
 ### Why are there so many sucky definitions of monads on the web?
 
-- Monads come from category theory {% fragment %}
-- Enter CS through $\lambda$-calculus (Church) {% fragment %}
-- Play a significant role only in functional programming {% fragment %}
-- Operates implicitly in languages like OCamel, Scheme, or Scala {% fragment %}
+<ul>
+    <li class="fragment">
+        Monads come from category theory
+    </li>
 
-To understand Monads, we'll have to be at least a little academic. {% fragment %}
+    <li class="fragment">
+        Enter CS through $\lambda$-calculus (Church)
+    </li>
+
+    <li class="fragment">
+        Play a significant role only in functional programming
+    </li>
+
+    <li class="fragment">
+        Operates implicitly in languages like OCamel, Scheme, or Scala
+    </li>
+</ul>
+
+<span class="fragment">
+    To understand Monads, we'll have to be at least a little academic
+</span>
 
 ---
 
 ### A more concrete problem to frame this talk:
 
-#### Writing code to get values from other values. {% fragment %}
+#### Writing code to get values from other values.
 
-- arithmetic operations on an input {% fragment %}
-- reading values from a HashMap {% fragment %}
-- executing queries from a database {% fragment %}
-- batching API calls from a network service {% fragment %}
+<ul>
+    <li class="fragment">
+        arithmetic operations on an input
+    </li>
+
+    <li class="fragment">
+        reading values from a HashMap
+    </li>
+
+    <li class="fragment">
+        executing queries from a database
+    </li>
+
+    <li class="fragment">
+        batching API calls from a network service
+    </li>
+</ul>
 
 ---
 
 ### Why are getting things hard?
 
-1. they could trigger errors {% fragment %}
-2. the output could have "no value" {% fragment %}
-3. the output could have multiple values {% fragment %}
-4. the output could take a long time (and I want to fork
-   threads to do it) {% fragment %}
+<ol>
+    <li class="fragment">
+        they could trigger errors
+    </li>
 
-In each cases, we are writing the same code again and again and
-again that obfuscates the underlying logic. {% fragment %}
+    <li class="fragment">
+        the output could have "no value"
+    </li>
+
+    <li class="fragment">
+        the output could have multiple values
+    </li>
+
+    <li class="fragment">
+        the output could take a long time
+    </li>
+</ol>
+
+<span class="fragment">
+    In each cases, we are writing the same code again and again and
+    again that obfuscates the underlying logic.
+</span>
