@@ -88,7 +88,7 @@ $$
         morphisms are methods to convert one data structure to another
         (e.g. `len(s: String): Int`, `buyStuff(money: NonNegativeInt): Thing`)
     </li>
-<ul>
+</ul>
 
 --
 
