@@ -80,13 +80,11 @@ $$
 
 <ul>
     <li class="fragment">
-        objects are the universe of data structures (e.g.
-        `String`, `Int`, `CheckingAccount[? >: Person]`)
+        objects are the universe of data structures
     </li>
 
     <li class="fragment">
         morphisms are methods to convert one data structure to another
-        (e.g. `len(s: String): Int`, `buyStuff(money: NonNegativeInt): Thing`)
     </li>
 </ul>
 
