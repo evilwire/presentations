@@ -97,7 +97,7 @@ A monad $M$ is a way to associate any given data structure $A$
 with another data structure $M[A]$ that allows us to:
 </span>
 
-<ol>
+<ul>
     <li class="fragment">
         create an instance of $M[A]$ from a given instance of $A$ for any data
         structure $A$ (embed)
@@ -107,7 +107,7 @@ with another data structure $M[A]$ that allows us to:
         obtain an instance of $M[A]$ from a given instance of $M[M[A]]$ for any
         data structure $A$ (flatmap)
     </li>
-</ol>
+</ul>
 
 --
 

@@ -85,7 +85,7 @@ anyway.
 
 ### Why are getting things hard?
 
-<ol>
+<ul>
     <li class="fragment">
         they could trigger errors
     </li>
@@ -101,7 +101,7 @@ anyway.
     <li class="fragment">
         the output could take a long time
     </li>
-</ol>
+</ul>
 
 <span class="fragment">
     In each cases, we are writing the same code again and again and
