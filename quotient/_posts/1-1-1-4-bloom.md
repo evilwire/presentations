@@ -1,30 +1,13 @@
-# The Academic Stuff
-
-<span class="fragment">
-    (yay)
-</span>
+# Bloom Filters
 
 --
 
-## Abstract Categories
+## Idea
 
-<ul>
-    <li class="fragment">
-        a "class" of objects
-    </li>
-
-    <li class="fragment">
-        for any two objects, there is a "class" of arrows called
-        morphisms (each representing a type of relationship between these two
-        objects)
-    </li>
-
-    <li class="fragment">
-        the pair of objects and morphisms form a category if morphisms
-        satisfy four main axioms (i.e. there is an identity morphism, there's
-        composition, composition is associative, etc)
-    </li>
-</ul>
+<span class="fragment">
+We have a collection of functions `hashes = [h_1,...,h_k]`
+with signatures 
+</span>
 
 --
 
