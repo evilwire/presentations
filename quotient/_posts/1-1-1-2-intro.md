@@ -15,7 +15,7 @@ element (e.g. "bob") is in a set
 </span>
 
 <span class="fragment">
-Comparable to the more well-known "Bloom filter"
+Comparable to the more well-known Bloom filter
 </span>
 
 ---

@@ -10,6 +10,6 @@
     </li>
 
     <li class="fragment">
-        Quotient filters as distributed filtering service
+        Distributed filtering service
     </li>
 </ol>

@@ -171,7 +171,7 @@ We can similarly define intersections.
 ## Quotient Filter: Limitations
 
 <ul>
-  <li class="fragment">in general, requires </li>
-  <li class="fragment"></li>
-  <li class="fragment">can compute size estimates of set</li>
+  <li class="fragment">in general, requires more storage
+    than Bloom Filters (~20% in a control study)</li>
+  <li class="fragment">performance degrades as number of elements increase</li>
 </ul>
