@@ -10,8 +10,8 @@ http://vldb.org/pvldb/vol5/p1627_michaelabender_vldb2012.pdf
 ## What are quotient filters?
 
 <span class="fragment">
-Probabilistic data structure used to test *with errors* whether or not an
-element (e.g. "bob") is in a collection of elements
+Probabilistic data structure used to answer whether or not an
+element (e.g. "bob") is in a set
 </span>
 
 <span class="fragment">
@@ -22,15 +22,13 @@ Comparable to the more well-known "Bloom filter"
 
 ### What problems does it solve?
 
-#### Naive approach
+#### Naive approach: `set`
 
 ```python
-# adding an element
 a = set()
 a.add("Marlene")
 a.add("Robert")
 
-# determine if
 "Marlene" in a
 ## > True
 
@@ -40,19 +38,39 @@ a.add("Robert")
 
 ---
 
-### What's the problem with `set`?
+### Good bits
 
 <span class="fragment">
-   Sets are maps
+   Easy to understand
 </span>
 
 <span class="fragment">
-   Space complexity is $O(n)$ where $n$ is size of the set
+   100% accurate
+</span>
+
+<span class="fragment">
+   Reasonably fast in memory
 </span>
 
 ---
 
-### How do we trade space for accuracy?
+### What's the problem with `set`?
+
+<span class="fragment">
+   Sets are implemented using hash maps
+</span>
+
+<span class="fragment">
+   We are storing all the objects in memory
+</span>
+
+<span class="fragment">
+   Storing `set`s on disk requires serializing *everything*
+</span>
+
+---
+
+### Filtering: How do we trade space for accuracy?
 <span class="fragment">
     Why do we need to store the objects when all we care about
     is membership?

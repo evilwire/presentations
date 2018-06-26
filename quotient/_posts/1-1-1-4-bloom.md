@@ -2,134 +2,140 @@
 
 --
 
+## History
+
+Invented by Burton Bloom in 1970 as a proposal to resolve
+problems of hyphenation rules of around 500K words
+
+--
+
 ## Idea
 
+We start with a collection of hash functions
+
+`hashes = [h_1,...,h_k]`
+
+--
+
+## Bloom Filter: under the hood
+
 <span class="fragment">
-We have a collection of functions `hashes = [h_1,...,h_k]`
-with signatures 
+A bloom filter is a collection of $k$ `set`s
+$S_1, S_2,...,S_k$
 </span>
 
 --
 
-## Functors
-
+```python
+class BloomFilter(object):
+  def constructor(hashes, dictionaries):
+    this.hashes = hashes
+    this.sets = [
+      set()
+      for i from 1 to len(hashes)
+    ]
+```
 <span class="fragment">
-$F: \mathcal{C} \rightarrow \mathcal{D}$ is a functor if for
-every $C$ in $\mathcal{C}$, $F(C)$ is an object in $\mathcal{D}$, and
-for every morphism $f: C \rightarrow C'$ in $\mathcal{C}$,
-$F(f): F(C) \rightarrow F(C')$ is a morphism in $\mathcal{D}$.
+*the above is not python
 </span>
 
 --
 
-## Natural Transformations
+### Bloom Filter: adding
+
+```python
+class BloomFilter(object):
+  # other lines of code
+
+  def add(val):
+    # for each hash function...
+    for hash, index in this.hashes:
+
+      # use it to hash the value
+      hashed_value = hash(val)
+
+      # store the hashed value in the dictionary
+      this.sets[index].add(hashed_value)
+
+```
+
+--
+
+### Bloom Filter: checking membership
+
+```python
+class BloomFilter(object):
+  # other lines of code
+
+  def is_in?(val):
+    # true if the value is in all the sets;
+    # false otherwise
+    for set in this.sets:
+      if val not in set:
+        return False
+
+    return True
+```
 
 <span class="fragment">
-For two functors $F, G: \mathcal{C} \rightarrow \mathcal{D}$, a natural
-transformation $\mu$ from $F$ to $G$ is a choice of one morphism
-$\mu_C: F(C) \rightarrow G(C)$ for each $C$ such that for any morphism
-$f: C \rightarrow D$ in $\mathcal{C}$,
-$$
-G(f) \circ \mu_C = \mu_D \circ G(f)
-$$
+we can likewise derive the union and intersection
+of bloom filters
 </span>
 
 --
 
-### Monads in the language of categories
-
-<span class="fragment">
-A monad is an endofunctor $M$ on a category $\mathcal{C}$ is an
-endofunctor $M: \mathcal{C} \rightarrow \mathcal{C}$ together with
-natural transformations:
-$$
-\mu: 1_T \longrightarrow M,\;\;\; \nu: M^2 \longrightarrow M
-$$
-<br \>
-such that
-<br \>
-$$
-\nu \circ \mu M = \nu \circ M \mu,\;\;\; \nu \circ M^2 \nu = \nu \circ \nu M^2
-$$
-</span>
-
-<span class="fragment">
-(and by "=", I mean naturally equivalent.)
-</span>
-
---
-
-### Categories in CS (Concrete Types)
+### Bloom Filter: Observations
 
 <ul>
-    <li class="fragment">
-        objects are the universe of data structures
-    </li>
-
-    <li class="fragment">
-        morphisms are methods to convert one data structure to another
-    </li>
+  <li class="fragment">
+    no false negatives
+  </li>
+  <li class="fragment">
+    false positives depends on hash collisions
+  </li>
+  <li class="fragment">
+    a collision happens with probability $p = m/2^n$
+  </li>
 </ul>
 
 --
 
-### Monads (less math, a little less abstract)
-
-<span class="fragment">
-A monad $M$ is a way to associate any given data structure $A$
-with another data structure $M[A]$ that allows us to:
-</span>
+### Bloom Filter: trade-offs
 
 <ul>
-    <li class="fragment">
-        create an instance of $M[A]$ from a given instance of $A$ for any data
-        structure $A$ (embed)
-    </li>
-
-    <li class="fragment">
-        obtain an instance of $M[A]$ from a given instance of $M[M[A]]$ for any
-        data structure $A$ (flatmap)
-    </li>
+  <li class="fragment">more hash functions = more accurate</li>
+  <li class="fragment">more hash functions = slower</li>
+  <li class="fragment">more bytes per hash = more accurate</li>
+  <li class="fragment">more bytes per hash = more space</li>
 </ul>
 
 --
 
-### Monads (continued)
+### Bloom Filter Optimality
 
-<span class="fragment">
-If there is a function that transforms $A$ into $B$, then
-the monad must "lift" the transformation. "Lift" must be
-compatible with `return` and `bind`.
-</span>
+We want Bloom filter with $n$ elements with an error
+rate $e$
+
+$$
+hello
+$$
 
 --
 
-## Relations to the literature
+### Bloom Filter: The Good Bits
 
 <ul>
-    <li class="fragment">
-        "embed" is the same as "return" in literature
-    </li>
-
-    <li class="fragment">
-        "flatmap" + naturality of monads is "bind" in literature
-    </li>
+  <li class="fragment">need more hash functions</li>
+  <li class="fragment">cannot dynamically resize</li>
+  <li class="fragment">cannot dynamically resize</li>
 </ul>
 
 --
 
-## Why are Monads Useful (version 1)
+## Bloom Filter: Limitations
 
 <ul>
-    <li class="fragment">
-        Elevates you from an engineer to an engineer with jargon #sarcasm
-    </li>
-
-    <li class="fragment">
-        A unified way of looking at the problem of "getting things"
-    </li>
-
-    <li class="fragment">
-        Forms the backbone of pure functional programming
-    </li>
+  <li class="fragment">need more hash functions</li>
+  <li class="fragment">cannot dynamically resize</li>
+  <li class="fragment">cannot dynamically resize</li>
 </ul>
