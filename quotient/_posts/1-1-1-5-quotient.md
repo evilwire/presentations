@@ -163,7 +163,7 @@ We can similarly define intersections.
   <li class="fragment">needs only one hash function - faster</li>
   <li class="fragment">scale up/down depending on capacity</li>
   <li class="fragment">can compute size estimates of set</li>
-  <li class="fragment">can compute size estimates of set</li>
+  <li class="fragment">can achieve *data locality*</li>
 </ul>
 
 --
@@ -171,7 +171,8 @@ We can similarly define intersections.
 ## Quotient Filter: Limitations
 
 <ul>
-  <li class="fragment">in general, requires more storage
+  <li class="fragment">in general, QF requires more storage
     than Bloom Filters (~20% in a control study)</li>
-  <li class="fragment">performance degrades as number of elements increase</li>
+  <li class="fragment">performance degrades as number of elements increases</li>
+  <li class="fragment">*probably* still can't delete</li>
 </ul>
