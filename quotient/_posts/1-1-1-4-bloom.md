@@ -1,141 +1,1 @@
-# Bloom Filters
-
---
-
-## History
-
-Invented by Burton Bloom in 1970 as a proposal to resolve
-problems of hyphenation rules of around 500K words
-
---
-
-## Idea
-
-We start with a collection of hash functions
-
-`hashes = [h_1,...,h_k]`
-
---
-
-## Bloom Filter: under the hood
-
-<span class="fragment">
-A bloom filter is a collection of $k$ `set`s
-$S_1, S_2,...,S_k$
-</span>
-
---
-
-```python
-class BloomFilter(object):
-  def constructor(hashes, dictionaries):
-    this.hashes = hashes
-    this.sets = [
-      set()
-      for i from 1 to len(hashes)
-    ]
-```
-<span class="fragment">
-*the above is not python
-</span>
-
---
-
-### Bloom Filter: adding
-
-```python
-class BloomFilter(object):
-  # other lines of code
-
-  def add(val):
-    # for each hash function...
-    for hash, index in this.hashes:
-
-      # use it to hash the value
-      hashed_value = hash(val)
-
-      # store the hashed value in the dictionary
-      this.sets[index].add(hashed_value)
-
-```
-
---
-
-### Bloom Filter: checking membership
-
-```python
-class BloomFilter(object):
-  # other lines of code
-
-  def is_in?(val):
-    # true if the value is in all the sets;
-    # false otherwise
-    for set in this.sets:
-      if val not in set:
-        return False
-
-    return True
-```
-
-<span class="fragment">
-we can likewise derive the union and intersection
-of bloom filters
-</span>
-
---
-
-### Bloom Filter: Observations
-
-<ul>
-  <li class="fragment">
-    no false negatives
-  </li>
-  <li class="fragment">
-    false positives depends on hash collisions
-  </li>
-  <li class="fragment">
-    a collision happens with probability $p = m/2^n$
-  </li>
-</ul>
-
---
-
-### Bloom Filter: trade-offs
-
-<ul>
-  <li class="fragment">more hash functions = more accurate</li>
-  <li class="fragment">more hash functions = slower</li>
-  <li class="fragment">more bytes per hash = more accurate</li>
-  <li class="fragment">more bytes per hash = more space</li>
-</ul>
-
---
-
-### Bloom Filter Optimality
-
-We want Bloom filter with $n$ elements with an error
-rate $e$
-
-$$
-hello
-$$
-
---
-
-### Bloom Filter: The Good Bits
-
-<ul>
-  <li class="fragment">need more hash functions</li>
-  <li class="fragment">cannot dynamically resize</li>
-  <li class="fragment">cannot dynamically resize</li>
-</ul>
-
---
-
-## Bloom Filter: Limitations
-
-<ul>
-  <li class="fragment">need more hash functions</li>
-  <li class="fragment">cannot dynamically resize</li>
-  <li class="fragment">cannot dynamically resize</li>
-</ul>
+# Bloom Filters--## HistoryInvented by Burton Bloom in 1970 as a proposal to resolveproblems similar to processing hyphenation.--## SetupWe start with a collection of hash functions`[h_1,...,h_k]`producing an integer between 0 and $m - 1$--## Bloom Filter: under the hood<span class="fragment">A bloom filter can be implemented as a collection of $m$ bits:$b_1, b_2,...,b_m$</span>--```pythonclass BloomFilter(object):  def constructor(hashes, dictionaries):    this.hashes = hashes    this.bits = [0 for i from 0 to m]```<span class="fragment">*the above is not python</span>--### Bloom Filter: adding```pythonclass BloomFilter(object):  # other lines of code  def add(val):    # for each hash function...    for hash in this.hashes:      # use it to hash the value      hashed_value = hash(val)      # store the hashed value in the bit array      this.bits[hashed_value] = 1```--### Bloom Filter: checking membership```pythonclass BloomFilter(object):  # other lines of code  def is_in?(val):    # if any of the bit at location given by the hash of     # value is 0, return false    for hash in this.hashes:      if this.bits[hash(val)] != 1:        return False    return True```--### Bloom Filter: Observations<ul>  <li class="fragment">    no false negatives  </li>  <li class="fragment">    false positives depends on hash collisions and different    hash functions hashing to the same slot  </li>  <li class="fragment">    a collision happens with probability         $$     p = \left(1 - \left[ 1 - \frac{1}{m}\right]^{kn}\right)^k \approx \left(1 - e^{-kn/m}\right)^k    $$    (where $k$ is the number of hash functions, $n$ is the number of elements [see Mitzenmacher and Upfal])  </li></ul>--### Bloom Filter: trade-offs<ul>  <li class="fragment">more bits = more accurate</li>  <li class="fragment">more elements = less accurate</li>  <li class="fragment">more hash functions initially reduces collision, but eventually decreases</li>  <li class="fragment">      optimal number of hash functions is given by:            $$      k = \frac{m}{n}\mathrm{ln}\;2      $$  </li></ul>--### Bloom Filter OptimalityFixing a probability $p$ of false positive:$$\frac{m}{n} = -\frac{\mathrm{log}_2\, p}{\ln\,2}$$and$$k = -\mathrm{log}_2\;p$$--### Bloom Filter: The Good Bits<ul>  <li class="fragment">no longer need to store elements</li>  <li class="fragment">size is fixed</li>  <li class="fragment">can tune size based on acceptable false positive rate</li>  <li class="fragment">great for filtering</li> </ul>--## Bloom Filter: Limitations<ul>  <li class="fragment">look up and insert requires multiple hashes</li>  <li class="fragment">cannot dynamically resize</li>  <li class="fragment">cannot remove without violating assumptions</li> </ul>
