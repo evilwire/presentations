@@ -4,6 +4,7 @@ title: not used. Use _config.yml!
 ---
 
 {% for post in site.posts reversed %}
+    <h1 style="color: white">{{ post.path }}</h1>
     {% if post.path contains 'monads' %}
         <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-notes="^Note:">
             <script type="text/template">
