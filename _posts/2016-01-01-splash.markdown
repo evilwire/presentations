@@ -1,4 +1,3 @@
-# Quotient Filter
-#### Caching Hashes on Flashes Without Thrashes
+# Presentations
 
-http://evilwire.github.io/presentations/quotient/
+http://evilwire.github.io/presentations/
