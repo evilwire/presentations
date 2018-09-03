@@ -27,5 +27,5 @@ reveal_path: /reveal.js/
 
 # Don't change anything below
 markdown: redcarpet
-pygments: true
+highlighter: rouge
 markdown_ext: ignoreme

@@ -1,3 +1,7 @@
+---
+categories: monads
+---
+
 ## What are monads?
 
 <span class="fragment">

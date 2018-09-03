@@ -1,3 +1,7 @@
+---
+categories: monads
+---
+
 # Monads
 #### What??
 
